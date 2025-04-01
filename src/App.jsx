@@ -24,11 +24,15 @@ const handleAddHoot = async (hootFormData) => {
   navigate('/hoots');
 };
 
+// src/App.jsx
+
 const handleDeleteHoot = async (hootId) => {
-  console.log('hootId', hootId);
-  setHoots(hoots.filter((hoot) => hoot._id !== hootId));
+  const deletedHoot = await hootService.deleteHoot(hootId);
+  // Filter state using deletedHoot._id:
+  setHoots(hoots.filter((hoot) => hoot._id !== deletedHoot._id));
   navigate('/hoots');
 };
+
 
 
   const [hoots, setHoots] = useState([]);

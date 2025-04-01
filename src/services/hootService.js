@@ -1,7 +1,9 @@
 // src/services/hootService.js
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/hoots`;
 // TODO: do User stories for trello AAU, under component hierarchy diagram
-// TODO: Delete a Hoot
+// TODO: Back in the HootForm component, update the existinghandleSubmit() function to use this new function when we’re updating an existing hoot:
+
+
 
 const index = async () => {
     try {
@@ -73,13 +75,33 @@ const deleteHoot = async (hootId) => {
     }
   };
   
+// src/services/hootService.js
+
+async function update(hootId, hootFormData) {
+    try {
+      const res = await fetch(`${BASE_URL}/${hootId}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(hootFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
   export {
     index,
     show,
     create,
     createComment,
     deleteHoot,
+    update,
   };
+  
   
   
   

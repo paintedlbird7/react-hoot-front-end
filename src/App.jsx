@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import HootList from './components/HootList/HootList';
 import * as hootService from './services/hootService';
 import HootDetails from './components/HootDetails/HootDetails';
+import HootForm from './components/HootForm/HootForm';
 
 import { UserContext } from './contexts/UserContext';
 import { useState, useEffect } from 'react';
@@ -33,6 +34,8 @@ const App = () => {
     <>
       <NavBar />
       <Routes>
+      <Route path='/hoots/new' element={<HootForm />} />
+      <Route path='/hoots/new' element={<h1>New Hoot</h1>} />
         <Route 
               path='/hoots/:hootId'
               element={<HootDetails />}

@@ -13,7 +13,7 @@ const HootDetails = () => {
           const hootData = await hootService.show(hootId);
           setHoot(hootData);
         };
-        fetchHoot();
+        fetchHoot(); // this will run when the effect function runs when we have a hootID
       }, [hootId]);
     
       // Verify the hoot state is set correctly:

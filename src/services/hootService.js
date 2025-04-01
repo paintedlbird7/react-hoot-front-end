@@ -1,9 +1,7 @@
 // src/services/hootService.js
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/hoots`;
 // TODO: do User stories for trello AAU, under component hierarchy diagram
-// TODO: In your browser, verify that typing in the CommentForm updates the formData state correctly.
-
-
+// TODO: Delete a Hoot
 
 const index = async () => {
     try {

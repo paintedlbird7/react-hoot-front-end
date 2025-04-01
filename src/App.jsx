@@ -24,6 +24,12 @@ const handleAddHoot = async (hootFormData) => {
   navigate('/hoots');
 };
 
+const handleDeleteHoot = async (hootId) => {
+  console.log('hootId', hootId);
+  setHoots(hoots.filter((hoot) => hoot._id !== hootId));
+  navigate('/hoots');
+};
+
 
   const [hoots, setHoots] = useState([]);
   // src/App.jsx
@@ -50,9 +56,9 @@ const handleAddHoot = async (hootFormData) => {
   element={<HootForm handleAddHoot={handleAddHoot} />}
 />
 <Route path='/hoots/new' element={<h1>New Hoot</h1>} />
-        <Route 
+<Route 
               path='/hoots/:hootId'
-              element={<HootDetails />}
+              element={<HootDetails handleDeleteHoot={handleDeleteHoot}/>}
             />
         <Route path='/hoots' element={<HootList hoots={hoots} />} />
         <Route path='/' element={user ? <Dashboard /> : <Landing />} />

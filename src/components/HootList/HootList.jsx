@@ -1,8 +1,9 @@
 // src/components/HootList/HootList.jsx
 import { Link } from 'react-router';
 
+
 const HootList = (props) => {
-  // src/components/HootList/HootList.jsx
+  
 
   return (
     <main>

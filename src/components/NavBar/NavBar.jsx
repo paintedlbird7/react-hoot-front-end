@@ -28,8 +28,6 @@ return (
     )}
   </nav>
 );
-
-
 };
 
 export default NavBar;

@@ -7,18 +7,32 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import HootList from './components/HootList/HootList';
+import * as hootService from './services/hootService';
 
 import { UserContext } from './contexts/UserContext';
+import { useState, useEffect } from 'react';
+
 
 const App = () => {
+  const [hoots, setHoots] = useState([]);
+  // src/App.jsx
   const { user } = useContext(UserContext);
+  useEffect(() => {
+    const fetchAllHoots = async () => {
+      const hootsData = await hootService.index();
+      // console log to verify data in the console
+      // console.log('hootsData:', hootsData);
+      setHoots(hootsData);
+    };
+    if (user) fetchAllHoots();
+  }, [user]);
   
- // src/App.jsx
-
  return (
   <>
     <NavBar/>
     <Routes>
+<Route path='/hoots' element={<HootList hoots={hoots} />} />
+
       <Route path='/' element={user ? <Dashboard /> : <Landing />} />
       {user ? (
         <>
@@ -39,4 +53,3 @@ const App = () => {
 };
 
 export default App;
-// TODO: Create hootService.js
